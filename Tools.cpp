@@ -1,4 +1,5 @@
 #include "Tools.h"
+#include <iostream>
 
 double Tools::Eval(std::string expr)
 {
@@ -71,3 +72,8 @@ void Tools::ClearConsole()
     system("clear");
 }
 
+void Tools::SetCursorPosition(size_t x, size_t y)
+{
+    std::string escapeSequence = "\033[" + std::to_string(x) + ";" + std::to_string(y) + "f";
+    std::cout << escapeSequence;
+}
