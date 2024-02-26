@@ -65,3 +65,9 @@ double Tools::Eval(std::string expr)
 
     return std::stod(tok.c_str()); // Return the value...
 }
+
+void Tools::ClearConsole()
+{
+    system("clear");
+}
+

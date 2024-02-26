@@ -5,5 +5,5 @@ class Tools
 {
 public:
     static double Eval(std::string expr);
-
+    static void ClearConsole();
 };
