@@ -1,34 +1,52 @@
 #include <iostream>
 #include "Tools.h"
+#include <cstring>
 
 int main()
 {
     char num1, num2, operation;
+    std::string expression, resultStr;
 
-    std::cin.get(num1);
-    std::cin.get(operation);
-    std::cin.get(num2);
+    while(true)
+    {
+        if(num1)
+        {
+            std::cin.ignore();
+            std::cin.clear();
+        }
+        else
+        {
+            std::cin.get(num1);
+        }
 
-    std::cout << std::endl;
 
-    std::string expression(1, num1);
-    expression += operation;
-    expression += num2;
+        if(!resultStr.empty())
+        {
+            expression = resultStr;
+        }
+        else
+        {
+            expression = num1;
+        }
 
-    std::cout << expression << std::endl;
+        std::cin.get(operation);
+        std::cin.get(num2);
 
-    double result = Tools::Eval(expression);
-    Tools::ClearConsole();
-    std::cout << result << std::endl;
-    std::cout << result << std::endl;
+        std::cout << std::endl;
 
-    std::string resultStr = std::to_string(result);
-    Tools::RemoveZeros(resultStr);
+        expression += operation;
+        expression += num2;
 
-    Tools::SetCursorPosition(0, resultStr.length() + 1);
+        double result = Tools::Eval(expression);
 
-    std::cin.ignore();
-    std::cin.get();
+        Tools::ClearConsole();
+        std::cout << result << std::endl;
+        std::cout << result << std::endl;
+
+        resultStr = std::to_string(result);
+        Tools::RemoveZeros(resultStr);
+        Tools::SetCursorPosition(0, resultStr.length() + 1);
+    }
 
     return 0;
 }
