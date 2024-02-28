@@ -3,40 +3,24 @@
 
 int main()
 {
-    char num1, num2, operation;
-    std::string expression, resultStr;
+    std::string expressionToStore, expressionToCalc, resultStr;
 
     while(true)
     {
-        if(num1)
+        if (!resultStr.empty())
         {
-            std::cin.ignore();
-            std::cin.clear();
+            expressionToCalc = resultStr;
+            std::getline(std::cin, expressionToStore);
+            expressionToCalc += expressionToStore;
         }
         else
         {
-            std::cin.get(num1);
+            std::getline(std::cin, expressionToCalc);
         }
-
-
-        if(!resultStr.empty())
-        {
-            expression = resultStr;
-        }
-        else
-        {
-            expression = num1;
-        }
-
-        std::cin.get(operation);
-        std::cin.get(num2);
 
         std::cout << std::endl;
 
-        expression += operation;
-        expression += num2;
-
-        double result = Tools::Eval(expression);
+        double result = Tools::Eval(expressionToCalc);
 
         Tools::ClearConsole();
         std::cout << result << std::endl;
