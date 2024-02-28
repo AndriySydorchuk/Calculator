@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Tools.h"
-#include <cstring>
 
 int main()
 {
